@@ -1,0 +1,27 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "`/routes` — папка с файлами роутера  \r `/controllers` — папка с файлами контроллеров пользователя и карточки   \r `/models` — папка с файлами описания схем пользователя и фильма",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarakulinAleksey/movies-explorer-api.git"
+  },
+  "author": "Karakulin Aleksey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarakulinAleksey/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/KarakulinAleksey/movies-explorer-api#readme",
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  }
+}
