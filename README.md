@@ -1,3 +1,3 @@
 # movies-explorer-api
 
-Имя домена api.mov-exp.karakulin.nomoredomains.work
+Имя домена бэкэнд api.mov-exp.karakulin.nomoredomains.work
