@@ -11,6 +11,6 @@ const {
 
 router.get('/users/me', getAuthUser); // d
 router.patch('/users/me', updateProfileUserValidator, updateProfileUser); // d
-router.delete('/signout', logout); // d
+router.get('/signout', logout); // d
 
 module.exports = router;

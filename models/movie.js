@@ -41,7 +41,7 @@ const movieSchema = new mongoose.Schema(
       validate: [validator.isURL, 'Некорректная ссылка на трейлер фильма'],
       required: true,
     },
-    trumbnail: {
+    thumbnail: {
       type: String,
       validate: [validator.isURL, 'Некорректная ссылка на трейлер фильма'],
       required: true,
@@ -51,8 +51,8 @@ const movieSchema = new mongoose.Schema(
       ref: 'user',
       required: true,
     },
-    movieId: { // проверить корректность схемы поля
-      type: String,
+    movieId: {
+      type: Number,
       required: true,
     },
     nameRU: {

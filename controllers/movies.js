@@ -17,17 +17,8 @@ const deleteMovie = (req, res, next) => {
       if (movie.owner.toString() !== req.user._id) {
         return next(new DeleteCardError('Попытка удалить чужой фильм.'));
       }
-      return Movie.findByIdAndDelete(moviesId).orFail()
-        .then((movieDel) => res.status(200).send(movieDel))
-        .catch((err) => {
-          if (err.name === 'DocumentNotFoundError') {
-            next(new NotFoundError('Фильм по указанному _id не найден.'));
-          } else if (err.name === 'CastError') {
-            next(new BadRequesError('Переданы некорректные данные при удалении фильма.'));
-          } else {
-            next(err);
-          }
-        });
+      return movie.remove()
+        .then(() => res.status(200).send({ message: movie }));
     })
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
@@ -49,7 +40,7 @@ const createMovie = (req, res, next) => {
     description,
     image,
     trailerLink,
-    trumbnail,
+    thumbnail,
     movieId,
     nameRU,
     nameEN,
@@ -64,7 +55,7 @@ const createMovie = (req, res, next) => {
     description,
     image,
     trailerLink,
-    trumbnail,
+    thumbnail,
     movieId,
     nameRU,
     nameEN,

@@ -5,6 +5,7 @@ const NotFoundError = require('../errors/not-found-error');
 const BadRequesError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 const EmailError = require('../errors/email-error');
+const { JWT_TOKEN } = require('../configs/token-key');
 
 const getAuthUser = (req, res, next) => { // 15
   const authUserId = req.user._id;
@@ -59,7 +60,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'some-secret-key',
+        JWT_TOKEN,
         { expiresIn: '7d' },
       );
       res
@@ -93,6 +94,8 @@ const updateProfileUser = (req, res, next) => {
         next(new BadRequesError('Переданы некорректные данные при обновлении пользователя.'));
       } else if (err.name === 'DocumentNotFoundError') {
         next(new NotFoundError('Пользователь по указанному _id не найден.'));
+      } else if (err.code === 11000) {
+        next(new EmailError('Указан email, который уже существует на сервере.'));
       } else {
         next(err);
       }
