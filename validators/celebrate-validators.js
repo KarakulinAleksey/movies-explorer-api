@@ -10,17 +10,17 @@ const urlValidator = (value) => {
 
 module.exports.createMovieValidator = celebrate({
   body: Joi.object().keys({
-    country: Joi.string().required().min(2).max(30),
-    director: Joi.string().required().min(2).max(30),
+    country: Joi.string().required().min(2).max(300),
+    director: Joi.string().required().min(2).max(300),
     duration: Joi.number().required(),
     year: Joi.string().required().min(2).max(30),
-    description: Joi.string().required().min(2).max(300),
+    description: Joi.string().required().min(2).max(3000),
     image: Joi.string().required().custom(urlValidator),
     trailerLink: Joi.string().required().custom(urlValidator),
     thumbnail: Joi.string().required().custom(urlValidator),
     movieId: Joi.number().required(),
-    nameRU: Joi.string().required().min(2).max(30),
-    nameEN: Joi.string().required().min(2).max(30),
+    nameRU: Joi.string().required().min(2).max(300),
+    nameEN: Joi.string().required().min(2).max(300),
   }),
 });
 

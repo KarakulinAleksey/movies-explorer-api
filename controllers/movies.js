@@ -56,12 +56,13 @@ const createMovie = (req, res, next) => {
     image,
     trailerLink,
     thumbnail,
+    owner: _id,
     movieId,
     nameRU,
     nameEN,
-    owner: _id,
   })
-    .then((movie) => res.status(201).send(movie))
+    // .then((movie) => res.status(201).send(movie))
+    .then((movie) => res.send({ movie }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequesError('Переданы некорректные данные при добавлении фильма.'));
